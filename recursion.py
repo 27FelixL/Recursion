@@ -61,7 +61,7 @@ def group_no_adj(start, nums, target):
     if group_no_adj(start + 2, nums, target - nums[start]):
         return True
     return group_no_adj(start + 1, nums, target)
-    
+
 def group_sum_5(start, nums, target):
     """
     Given a list of ints, determine if there exists a group of some ints that sum to
@@ -71,7 +71,7 @@ def group_sum_5(start, nums, target):
     pre: start >= 0, len(nums) >= 0, target >= 0, nums will only contain ints
     post: return True if nums has a group of ints that sum to target, False otherwise
     """
-    if start >= len(nums):  
+    if start >= len(nums):
         return target == 0
     if nums[start] % 5 == 0:
         if start + 1 < len(nums) and nums[start + 1] == 1:
@@ -92,11 +92,11 @@ def group_sum_clump(start, nums, target):
     pre: start >= 0, len(nums) >= 0, target >= 0, nums will only contain ints
     post: return True if nums has a group of ints that sum to target, False otherwise
     """
-    if start >= len(nums):  
+    if start >= len(nums):
         return target == 0
     clump_sum = nums[start]
     index = start + 1
-    while index < len(nums) and nums[index] == nums[start]:  
+    while index < len(nums) and nums[index] == nums[start]:
         clump_sum += nums[index]
         index += 1
     if group_sum_clump(index, nums, target - clump_sum):
@@ -115,11 +115,9 @@ def split_array(nums):
     def group(index, sum1, sum2):
         if index == len(nums):
             return sum1 == sum2
-        return group(index + 1, sum1 + nums[index], sum2) or group(index + 1, sum1, sum2 + nums[index])
+        return group(index + 1,sum1 + nums[index], sum2) or group(index + 1,sum1,sum2 + nums[index])
     return group(0, 0, 0)
 
-
-# TODO: Modify this function. You may delete this comment when you are done.
 def split_odd_10(nums):
     """
     Given a list of ints, determine if the numbers can be split evenly into two groups
@@ -132,11 +130,9 @@ def split_odd_10(nums):
     def group(index, sum1, sum2):
         if index == len(nums):
             return (sum1 % 10 == 0 and sum2 % 2 == 1) or (sum2 % 10 == 0 and sum1 % 2 == 1)
-        return group(index + 1, sum1 + nums[index], sum2) or group(index + 1, sum1, sum2 + nums[index])
+        return group(index + 1,sum1 + nums[index],sum2) or group(index + 1,sum1,sum2 + nums[index])
     return group(0, 0, 0)
 
-
-# TODO: Modify this function. You may delete this comment when you are done.
 def split_53(nums):
     """
     Given a list of ints, determine if the numbers can be split evenly into two groups
@@ -149,7 +145,7 @@ def split_53(nums):
     post: return True if nums can be split, False otherwise
     """
     def group(index, group1_sum, group2_sum):
-        if index == len(nums):  
+        if index == len(nums):
             return group1_sum == group2_sum
         if nums[index] % 5 == 0:
             return group(index + 1, group1_sum + nums[index], group2_sum)
