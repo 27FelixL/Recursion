@@ -149,7 +149,7 @@ def split_53(nums):
             return group1_sum == group2_sum
         if nums[index] % 5 == 0:
             return group(index + 1, group1_sum + nums[index], group2_sum)
-        elif nums[index] % 3 == 0:
+        if nums[index] % 3 == 0:
             return group(index + 1, group1_sum, group2_sum + nums[index])
         else:
             return (group(index + 1, group1_sum + nums[index], group2_sum) or
